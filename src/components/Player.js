@@ -66,10 +66,6 @@ export default function Player({ pl }) {
   }
 
   function getIndex() {
-    console.log(
-      "get index",
-      songs.findIndex((e) => e.id === curSong.id)
-    );
     return songs.findIndex((e) => e.id === curSong.id);
   }
 
@@ -90,6 +86,14 @@ export default function Player({ pl }) {
         break;
       default:
       // default case
+    }
+  }
+
+  function songEnded() {
+    if (getIndex() === songs.length - 1) {
+      setIsPlaying((pstate) => !pstate);
+    } else {
+      skipSongHandler("forward");
     }
   }
 
@@ -131,6 +135,7 @@ export default function Player({ pl }) {
       <audio
         onLoadedMetadata={metadaDataHandler}
         onTimeUpdate={timeUpdateHandler}
+        onEnded={songEnded}
         ref={audioRef}
         src={curSong.audio}
       ></audio>
