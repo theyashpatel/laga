@@ -8,7 +8,7 @@ export default function Nav({ pl }) {
   }
   return (
     <nav>
-      <h1>Waves</h1>
+      <h1>Laga</h1>
       <button onClick={libraryToggle}>
         Library
         <FontAwesomeIcon icon={faMusic} />

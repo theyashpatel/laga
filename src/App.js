@@ -7,7 +7,7 @@ import Library from "./components/Library";
 import Nav from "./components/Nav";
 
 function App() {
-  const [songs, setSongs] = useState(chillHop);
+  const [songs] = useState(chillHop);
   const [curSong, setCurSong] = useState(songs[0]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [libraryStatus, setLibraryStatus] = useState(false);
@@ -23,7 +23,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className={`App ${libraryStatus ? "library-active" : ""}`}>
       <Nav pl={payload} />
       <Song pl={payload} />
       <Player pl={payload} />
